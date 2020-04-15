@@ -7,26 +7,26 @@
   </head>
   <body>
     <div class="w3-container w3-center" width="100%">
-      <form class="w3-container" action="/setHours" method="post">
-        <p>
-          Hours
-          <input type="number" name="hourServo" placeholder="1500">
+      <div class="w3-container w3-center">
+        <h1> Hours </h1>
+        <form class="w3-container" action="/setHours" method="post">
+          <input type="number" name="hourServo" placeholder="Servo position (700 - 2200)">
           <input type="submit" name="submit" value="Set" class="w3-button w3-red">
-        </p>
-      </form>
-      <form class="w3-container" action="/setMinutes" method="post">
-        <p>
-          Minutes
-          <input type="number" name="minutesServo" placeholder="1500">
-          <input type="submit" name="submit" value="Set" class="w3-button w3-blue">
-        </p>
-      </form>
-      <form class="w3-container" action="/setSeconds" method="post">
-        <p>
-          Seconds
-          <input type="number" name="secondsServo" placeholder="1500">
-          <input type="submit" name="submit" value="Set" class="w3-button w3-green">
-        </p>
-      </form>
+        </form>
+      </div>
+      <div class="w3-container w3-center">
+        <h1> Minutes </h1>
+        <form class="w3-container" action="/setMinutes" method="post">
+          <input type="number" name="minutesServo" placeholder="Servo position (700 - 2200)">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-red">
+        </form>
+      </div>
+      <div class="w3-container w3-center">
+        <h1> Seconds </h1>
+        <form class="w3-container" action="/setSeconds" method="post">
+          <input type="number" name="secondsServo" placeholder="Servo position (700 - 2200)">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-red">
+        </form>
+      </div>
     </body>
   </html>

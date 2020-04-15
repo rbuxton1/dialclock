@@ -8,8 +8,15 @@ const Gpio = require("pigpio").Gpio;
 //minutes -> 15
 //seconds -> 18
 const hourServo = new Gpio(14, {mode: Gpio.OUTPUT});
+const hourLight = new Gpio(25, {mode: Gpio.OUTPUT});
 const minutesServo = new Gpio(15, {mode: Gpio.OUTPUT});
+const minitesLight = new Gpio(8, {mode: Gpio.OUTPUT});
 const secondsServo = new Gpio(18, {mode: Gpio.OUTPUT});
+const secondsLight = new Gpio(7, {mode: Gpio.OUTPUT});
+
+//positions
+var left = 2200;
+var right = 700;
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,4 +39,25 @@ app.post("/setSeconds", function(req, res){
   res.redirect("/");
 });
 
+app.post("/setHoursLight", function(req, res){
+  hourLight.pwmWrite(req.body.hourLight);
+  res.redirect("/");
+});
+app.post("/setMinutesLight", function(req, res){
+  minutesLight.pwmWrite(req.body.minutesLight);
+  res.redirect("/");
+});
+app.post("/setSecondsLight", function(req, res){
+  secondsLight.pwmWrite(req.body.secondsLight);
+  res.redirect("/");
+})
+
 app.listen(8080, function(){ console.log("Listening on port 8080!"); });
+
+//clocking here
+setInterval(() => {
+  var date = new Date();
+  hourServo.servoWrite(((1500 / 24) * date.getHours()) + right);
+  minutesServo.servoWrite(((1500 / 60) * date.getMinutes()) + right);
+  secondsServo.servoWrite(((1500 / 60) * date.getSeconds()) + right)
+}, 250);
