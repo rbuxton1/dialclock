@@ -28,8 +28,8 @@ app.post("/setMinutes", function(req, res){
   res.redirect("/");
 });
 app.post("/setSeconds", function(req, res){
-  seconds.servoWrite(req.body.secondsServo);
+  secondsServo.servoWrite(req.body.secondsServo);
   res.redirect("/");
 });
 
-app.listen(8080, function(){ console.log("Listening on port 3000!"); });
+app.listen(8080, function(){ console.log("Listening on port 8080!"); });
