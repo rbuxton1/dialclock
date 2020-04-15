@@ -61,7 +61,7 @@ setInterval(() => {
   var mPos = ((1500 / 60) * date.getMinutes()) + right;
   var sPos = ((1500 / 60) * date.getSeconds()) + right;
 
-  hourServo.servoWrite(hPos);
-  minutesServo.servoWrite(mPos);
-  secondsServo.servoWrite(sPos); 
+  console.log("hPos: " + hPos);
+  console.log("mPos: " + mPos);
+  console.log("sPos: " + sPos);
 }, 250);
