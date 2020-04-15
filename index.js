@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const GPIO = require("pigpio").Gpio;
+const Gpio = require("pigpio").Gpio;
 
 //Servos
 //hours -> 14
 //minutes -> 15
 //seconds -> 18
-const hourServo = new GPIO(14, {mode: GPIO.OUTPUT});
-const minutesServo = new GPIO(15, {mode: GPIO.OUTPUT});
-const secondsServo = new GPIO(18, {mode: GPIO.OUTPUT});
+const hourServo = new Gpio(14, {mode: Gpio.OUTPUT});
+const minutesServo = new Gpio(15, {mode: Gpio.OUTPUT});
+const secondsServo = new Gpio(18, {mode: Gpio.OUTPUT});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
