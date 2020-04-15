@@ -57,11 +57,11 @@ app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 //clocking here
 setInterval(() => {
   var date = new Date();
-  var hPos = ((1500 / 24) * date.getHours()) + right;
-  var mPos = ((1500 / 60) * date.getMinutes()) + right;
-  var sPos = ((1500 / 60) * date.getSeconds()) + right;
+  var hPos = left - (((1500 / 24) * date.getHours()) + right);
+  var mPos = left - (((1500 / 60) * date.getMinutes()) + right);
+  var sPos = left - (((1500 / 60) * date.getSeconds()) + right);
 
   hourServo.servoWrite(Math.floor(hPos));
   minutesServo.servoWrite(Math.floor(mPos));
-  secondsServo.servoWrite(Math.floor(sPos)) 
+  secondsServo.servoWrite(Math.floor(sPos))
 }, 250);
