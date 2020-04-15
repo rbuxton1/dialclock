@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <title> Dial Clock Control Panel </title>
+  </head>
+  <body>
+    <div class="w3-container w3-center" width="100%">
+      <form class="w3-container" action="/setHours" method="post">
+        <p>
+          Hours
+          <input type="number" name="hourServo" placeholder="1500">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-red">
+        </p>
+      </form>
+      <form class="w3-container" action="/setMinutes" method="post">
+        <p>
+          Minutes
+          <input type="number" name="minutesServo" placeholder="1500">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-blue">
+        </p>
+      </form>
+      <form class="w3-container" action="/setSeconds" method="post">
+        <p>
+          Seconds
+          <input type="number" name="secondsServo" placeholder="1500">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-green">
+        </p>
+      </form>
+    </body>
+  </html>
