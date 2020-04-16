@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const Gpio = require("pigpio").Gpio;
 const fs = require('fs');
+const date = new Date();
 
 //config data
 var configFile = fs.readFileSync("config.json");
@@ -116,7 +117,6 @@ app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 //clocking here
 setInterval(() => {
   if(clockMode){
-    let date = new Date();
     let hPos = config.hours.left - Math.abs(Math.floor(scale(date.getHours(), 0, 24, config.hours.right, config.hours.left)));
     let mPos = config.minutes.left - Math.abs(Math.floor(scale(date.getMinutes(), 0, 60, config.minutes.right, config.minutes.left)));
     let sPos = config.seconds.left - Math.abs(Math.floor(scale(date.getSeconds(), 0, 60, config.seconds.right, config.seconds.left)));
