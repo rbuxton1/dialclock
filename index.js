@@ -20,7 +20,7 @@ const secondsServo = new Gpio(18, {mode: Gpio.OUTPUT});
 const secondsLight = new Gpio(7, {mode: Gpio.OUTPUT});
 
 //Math
-function scale(num, in_min, in_max, out_min, out_max){
+const scale = (num, in_min, in_max, out_min, out_max) => {
   //console.log((num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);
   return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
