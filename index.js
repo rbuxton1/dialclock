@@ -62,9 +62,9 @@ app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 //clocking here
 setInterval(() => {
   var date = new Date();
-  var hPos = scale(date.getHours(), 0, 23, right, left);
-  var mPos = scale(date.getMinutes(), 0, 59, right, left);
-  var sPos = scale(date.getSeconds(), 0, 59, right, left);
+  var hPos = 1500 - scale(date.getHours(), 0, 23, right, left);
+  var mPos = 1500 - scale(date.getMinutes(), 0, 59, right, left);
+  var sPos = 1500 - scale(date.getSeconds(), 0, 59, right, left);
 
   hourServo.servoWrite(Math.floor(hPos));
   minutesServo.servoWrite(Math.floor(mPos));
