@@ -18,6 +18,11 @@ const secondsLight = new Gpio(7, {mode: Gpio.OUTPUT});
 var left = 2200;
 var right = 700;
 
+//Math
+const scale = (num, in_min, in_max, out_min, out_max) => {
+  return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -57,9 +62,9 @@ app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 //clocking here
 setInterval(() => {
   var date = new Date();
-  var hPos = (left - ((1500 / 24) * date.getHours())) + right;
-  var mPos = (left - ((1500 / 60) * date.getMinutes())) + right;
-  var sPos = (left - ((1500 / 60) * date.getSeconds()) )+ right;
+  var hPos = scale(date.getHours(), 0, 23, right, left);
+  var mPos = scale(date.getMinutes(), 0, 59, right, left);
+  var sPos = scale(date.getSeconds(), 0, 59, right, left);
 
   hourServo.servoWrite(Math.floor(hPos));
   minutesServo.servoWrite(Math.floor(mPos));
