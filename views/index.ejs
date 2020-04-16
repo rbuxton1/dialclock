@@ -13,25 +13,56 @@
           <input type="submit" name="submit" value="Invert mode">
         </form>
       </div>
+
       <div class="w3-container w3-center">
         <h1> Hours </h1>
         <form class="w3-container" action="/set/hours/pos" method="post">
           <input type="number" name="pos" placeholder="Servo position (700 - 2200)">
           <input type="submit" name="submit" value="Set" class="w3-button w3-red">
         </form>
+        <form class="w3-container" action="/set/hours/left" method="post">
+          <input type="number" name="left" placeholder="left end point">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-green">
+        </form>
+        <form class="w3-container" action="/set/hours/right" method="post">
+          <input type="number" name="right" placeholder="right end point">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-blue">
+        </form>
       </div>
+
+      <hr>
+
       <div class="w3-container w3-center">
         <h1> Minutes </h1>
         <form class="w3-container" action="/set/minutes/pos" method="post">
           <input type="number" name="pos" placeholder="Servo position (700 - 2200)">
           <input type="submit" name="submit" value="Set" class="w3-button w3-red">
         </form>
+        <form class="w3-container" action="/set/minutes/left" method="post">
+          <input type="number" name="left" placeholder="left end point">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-green">
+        </form>
+        <form class="w3-container" action="/set/minutes/right" method="post">
+          <input type="number" name="right" placeholder="right end point">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-blue">
+        </form>
       </div>
+
+      <hr>
+
       <div class="w3-container w3-center">
         <h1> Seconds </h1>
         <form class="w3-container" action="/set/seconds/pos" method="post">
           <input type="number" name="pos" placeholder="Servo position (700 - 2200)">
           <input type="submit" name="submit" value="Set" class="w3-button w3-red">
+        </form>
+        <form class="w3-container" action="/set/seconds/left" method="post">
+          <input type="number" name="left" placeholder="left end point">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-green">
+        </form>
+        <form class="w3-container" action="/set/seconds/right" method="post">
+          <input type="number" name="right" placeholder="right end point">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-blue">
         </form>
       </div>
     </body>
