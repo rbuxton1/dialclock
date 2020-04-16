@@ -127,7 +127,7 @@ setInterval(() => {
     var mPos = (date.getMinutes() - 0) * (config.minutes.left - config.minutes.right) / (59 - 0);
     var sPos = (date.getSeconds() - 0) * (config.seconds.left - config.seconds.right) / (59 - 0);
 
-    if(hourServo.servoWrite(Math.floor(hPos) + config.hours.right);
+    hourServo.servoWrite(Math.floor(hPos) + config.hours.right);
     minutesServo.servoWrite(Math.floor(mPos) + config.minutes.right);
     secondsServo.servoWrite(Math.floor(sPos) + config.seconds.right);
   }
