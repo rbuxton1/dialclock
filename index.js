@@ -128,4 +128,4 @@ setInterval(() => {
     if(sPos > config.seconds.right && mPos < config.seconds.left) secondsServo.servoWrite(sPos);
     else console.log("Erroneous spos: " + sPos);
   }
-}, 50);
+}, 500);
