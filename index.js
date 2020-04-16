@@ -117,11 +117,17 @@ setInterval(() => {
   if(clockMode){
     var date = new Date();
     //(num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    config.hours.left = config.hours.left + 0;
+    config.minutes.left = config.minutes.left + 0;
+    config.seconds.left = config.seconds.left + 0;
+    config.hours.right = config.hours.right + 0;
+    config.minutes.right = config.minutes.right + 0;
+    config.seconds.right = config.seconds.right + 0;
     var hPos = (date.getHours() - 0) * (config.hours.left - config.hours.right) / (23 - 0);
     var mPos = (date.getMinutes() - 0) * (config.minutes.left - config.minutes.right) / (59 - 0);
     var sPos = (date.getSeconds() - 0) * (config.seconds.left - config.seconds.right) / (59 - 0);
 
-    hourServo.servoWrite(Math.floor(hPos) + config.hours.right);
+    if(hourServo.servoWrite(Math.floor(hPos) + config.hours.right);
     minutesServo.servoWrite(Math.floor(mPos) + config.minutes.right);
     secondsServo.servoWrite(Math.floor(sPos) + config.seconds.right);
   }
