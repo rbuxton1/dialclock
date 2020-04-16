@@ -119,7 +119,7 @@ setInterval(() => {
     var date = new Date();
     var hPos = config.hours.left - Math.abs(Math.floor(scale(date.getHours(), 0, 23, config.hours.left, config.hours.right)));
     var mPos = config.minutes.left - Math.abs(Math.floor(scale(date.getMinutes(), 0, 59, config.minutes.left, config.minutes.right)));
-    var sPos = config.seconds.left - Math.abs(Math.floor(scale(date.getSeconds(), 0, 23, config.seconds.left, config.seconds.right)));
+    var sPos = config.seconds.left - Math.abs(Math.floor(scale(date.getSeconds(), 0, 59, config.seconds.left, config.seconds.right)));
 
     if(hPos > config.hours.right && hPos < config.hours.left) hourServo.servoWrite(hPos);
     else console.log("Erroneous hpos: " + hPos);
