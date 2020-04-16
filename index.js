@@ -51,52 +51,52 @@ app.post("/set/seconds/pos", function(req, res){
 
 app.post("/set/hours/bl", function(req, res){
   config.hours.bl = req.body.bl;
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   hourLight.pwmWrite(req.body.bl);
   res.redirect("/");
 });
 app.post("/set/minutes/bl", function(req, res){
   config.minutes.bl = req.body.bl;
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   minutesLight.pwmWrite(req.body.bl);
   res.redirect("/");
 });
 app.post("/set/minutes/bl", function(req, res){
   config.seconds.bl = req.body.bl
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   secondsLight.pwmWrite(req.body.bl);
   res.redirect("/");
 });
 
 app.post("/set/hours/left", function(req, res){
   config.hours.left = req.body.left;
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   res.redirect("/");
 });
 app.post("/set/minutes/left", function(req, res){
   config.minutes.left = req.body.left;
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   res.redirect("/");
 });
 app.post("/set/seconds/left", function(req, res){
   config.seconds.left = req.body.left;
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   res.redirect("/");
 });
 
 app.post("/set/hours/right", function(req, res){
   config.hours.right = req.body.right;
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   res.redirect("/");
 });
 app.post("/set/minutes/right", function(req, res){
   config.minutes.right = req.body.right;
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   res.redirect("/");
 });
 app.post("/set/seconds/right", function(req, res){
   config.seconds.right = req.body.right;
-  fs.writeFileSync('config.json', config);
+  fs.writeFileSync('config.json', JSON.stringify(config));
   res.redirect("/");
 });
 
