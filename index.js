@@ -120,9 +120,9 @@ setInterval(() => {
     //let hPos = scale(currentTime.getHours(), 0, 24, config.hours.right, config.hours.left);
     //let mPos = scale(currentTime.getMinutes(), 0, 60, config.minutes.right, config.minutes.left);
     //let sPos = scale(currentTime.getSeconds(), 0, 60, config.seconds.right, config.seconds.left);
-    let hPos = (((config.hours.left - config.hours.right) / 24) * currentTime.getHours()) + config.hours.right;
-    let mPos = (((config.minutes.left - config.minutes.right) / 60) * currentTime.getMinutes()) + config.minutes.right;
-    let sPos = (((config.seconds.left - config.seconds.right) / 60) * currentTime.getSeconds()) + config.seconds.right;
+    let hPos = config.hours.left - (((config.hours.left - config.hours.right) / 24) * currentTime.getHours());
+    let mPos = config.minutes.left - (((config.minutes.left - config.minutes.right) / 60) * currentTime.getMinutes());
+    let sPos =  config.seconds.left - (((config.seconds.left - config.seconds.right) / 60) * currentTime.getSeconds());
 
     if(hPos > config.hours.right && hPos < config.hours.left) hourServo.servoWrite(Math.floor(hPos));
     else console.log("Erroneous hpos: " + hPos);
