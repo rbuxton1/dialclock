@@ -130,8 +130,8 @@ setInterval(() => {
     if(hPos > 400 && hPos < 2300) hourServo.servoWrite(hPos);
     else console.log("Erroneous hpos: " + hPos);
     if(mPos > 400 && mPos < 2300) minutesServo.servoWrite(mPos);
-    else console.log("Erroneous mpos: " + mpos);
+    else console.log("Erroneous mpos: " + mPos);
     if(sPos > 400 && mPos < 2300) secondsServo.servoWrite(Math.floor(sPos) + config.seconds.right);
-    else console.log("Erroneous spos: " + spos);
+    else console.log("Erroneous spos: " + sPos);
   }
 }, 50);
