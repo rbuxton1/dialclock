@@ -136,12 +136,15 @@ setInterval(() => {
     let hPos = config.hours.left - (((config.hours.left - config.hours.right) / 23) * currentTime.getHours());
     let mPos = config.minutes.left - (((config.minutes.left - config.minutes.right) / 59) * currentTime.getMinutes());
     let sPos =  config.seconds.left - (((config.seconds.left - config.seconds.right) / 59) * currentTime.getSeconds());
+    let sPosRev = config.seconds.left - (((config.seconds.left - config.seconds.right) / 59) * (59 - currentTime.getSeconds()));
 
     if(hPos >= config.hours.right && hPos <= config.hours.left) hourServo.servoWrite(Math.floor(hPos));
     else console.log("Erroneous hpos: " + hPos);
     if(mPos >= config.minutes.right && mPos <= config.minutes.left) minutesServo.servoWrite(Math.floor(mPos));
     else console.log("Erroneous mpos: " + mPos);
-    if(sPos >= config.seconds.right && mPos <= config.seconds.left) secondsServo.servoWrite(Math.floor(sPos));
-    else console.log("Erroneous spos: " + sPos);
+    if(sPos >= config.seconds.right && mPos <= config.seconds.left){
+      if(currentTime.getSeconds() % 2 == 0) secondsServo.servoWrite(Math.floor(sPos));
+      else secondsServo.servoWrite(Math.floor(sPosRev));
+    } else console.log("Erroneous spos: " + sPos);
   }
 }, 50);
