@@ -115,8 +115,8 @@ setInterval(() => {
     var mPos = config.minutes.left - scale(date.getMinutes(), 0, 59, config.minutes.right, config.hours.left);
     var sPos = config.seconds.left - scale(date.getSeconds(), 0, 59, config.seconds.right, config.seconds.left);
 
-    hourServo.servoWrite(Math.floor(hPos) + right);
-    minutesServo.servoWrite(Math.floor(mPos) + right);
-    secondsServo.servoWrite(Math.floor(sPos) + right);
+    hourServo.servoWrite(Math.floor(hPos) + config.hours.right);
+    minutesServo.servoWrite(Math.floor(mPos) + config.minutes.right);
+    secondsServo.servoWrite(Math.floor(sPos) + config.seconds.right);
   }
 }, 50);
