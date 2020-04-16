@@ -117,9 +117,9 @@ app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 setInterval(() => {
   if(clockMode){
     var date = new Date();
-    var hPos = Math.floor(scale(date.getHours(), 0, 23, config.hours.right, config.hours.left));
-    var mPos = Math.floor(scale(date.getMinutes(), 0, 59, config.minutes.right, config.minutes.left));
-    var sPos = Math.floor(scale(date.getSeconds(), 0, 23, config.seconds.right, config.seconds.left));
+    var hPos = (config.hours.left - config.hours.right) - Math.floor(scale(date.getHours(), 0, 23, config.hours.right, config.hours.left));
+    var mPos = (config.minutes.left - config.minutes.right) - Math.floor(scale(date.getMinutes(), 0, 59, config.minutes.right, config.minutes.left));
+    var sPos = (config.seconds.left - config.seconds.right) - Math.floor(scale(date.getSeconds(), 0, 23, config.seconds.right, config.seconds.left));
 
     if(hPos > config.hours.right && hPos < config.hours.left) hourServo.servoWrite(hPos);
     else console.log("Erroneous hpos: " + hPos);
