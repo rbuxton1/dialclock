@@ -143,7 +143,7 @@ setInterval(() => {
     if(mPos >= config.minutes.right && mPos <= config.minutes.left) minutesServo.servoWrite(Math.floor(mPos));
     else console.log("Erroneous mpos: " + mPos);
     if(sPos >= config.seconds.right && mPos <= config.seconds.left){
-      if(currentTime.getSeconds() % 2 == 0) secondsServo.servoWrite(Math.floor(sPos));
+      if(currentTime.getMinutes() % 2 == 0) secondsServo.servoWrite(Math.floor(sPos));
       else secondsServo.servoWrite(Math.floor(sPosRev));
     } else console.log("Erroneous spos: " + sPos);
   }
