@@ -123,12 +123,15 @@ setInterval(() => {
     config.hours.right = config.hours.right + 0;
     config.minutes.right = config.minutes.right + 0;
     config.seconds.right = config.seconds.right + 0;
-    var hPos = (date.getHours() - 0) * (config.hours.left - config.hours.right) / (23 - 0);
-    var mPos = (date.getMinutes() - 0) * (config.minutes.left - config.minutes.right) / (59 - 0);
-    var sPos = (date.getSeconds() - 0) * (config.seconds.left - config.seconds.right) / (59 - 0);
+    var hPos = Math.floor(config.hours.left - scale(date.getHours(), 0, 23, config.hours.right, config.hours.left)) + config.hours.right;
+    var mPos = Math.floor(config.minutes.left - scale(date.getMinutes(), 0, 59, config.minutes.right, config.minutes.left)) + config.minutes.right;
+    var sPos = Math.floor(config.seconds.left - scale(date.getSeconds(), 0, 23, config.seconds.right, config.seconds.left)) + config.seconds.right;
 
-    hourServo.servoWrite(Math.floor(hPos) + config.hours.right);
-    minutesServo.servoWrite(Math.floor(mPos) + config.minutes.right);
-    secondsServo.servoWrite(Math.floor(sPos) + config.seconds.right);
+    if(hPos > 400 && hPos < 2300) hourServo.servoWrite(hPos);
+    else console.log("Erroneous hpos: " + hPos);
+    if(mPos > 400 && mPos < 2300) minutesServo.servoWrite(mPos);
+    else console.log("Erroneous mpos: " + mpos);
+    if(sPos > 400 && mPos < 2300) secondsServo.servoWrite(Math.floor(sPos) + config.seconds.right);
+    else console.log("Erroneous spos: " + spos);
   }
 }, 50);
