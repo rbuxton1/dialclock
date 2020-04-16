@@ -21,7 +21,7 @@ const secondsLight = new Gpio(7, {mode: Gpio.OUTPUT});
 
 //Math
 const scale = (num, in_min, in_max, out_min, out_max) => {
-  console.log((num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);
+  //console.log((num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);
   return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
@@ -117,9 +117,9 @@ app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 setInterval(() => {
   if(clockMode){
     var date = new Date();
-    var hPos = config.hours.left - Math.abs(Math.floor(scale(date.getHours(), 0, 23, config.hours.left, config.hours.right)));
-    var mPos = config.minutes.left - Math.abs(Math.floor(scale(date.getMinutes(), 0, 59, config.minutes.left, config.minutes.right)));
-    var sPos = config.seconds.left - Math.abs(Math.floor(scale(date.getSeconds(), 0, 59, config.seconds.left, config.seconds.right)));
+    var hPos = config.hours.left - Math.abs(Math.floor(scale(date.getHours(), 0, 24, config.hours.left, config.hours.right)));
+    var mPos = config.minutes.left - Math.abs(Math.floor(scale(date.getMinutes(), 0, 60, config.minutes.left, config.minutes.right)));
+    var sPos = config.seconds.left - Math.abs(Math.floor(scale(date.getSeconds(), 0, 60, config.seconds.left, config.seconds.right)));
 
     if(hPos > config.hours.right && hPos < config.hours.left) hourServo.servoWrite(hPos);
     else console.log("Erroneous hpos: " + hPos);
