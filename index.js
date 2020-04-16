@@ -111,6 +111,19 @@ app.post("/invertmode", function(req, res){
   res.redirect("/");
 });
 
+app.post("/lights/on", function(req, res){
+  hourLight.pwmWrite(config.hours.bl);
+  minutesLight.pwmWrite(config.minutes.bl);
+  secondsLight.pwmWrite(config.seconds.bl);
+  res.redirect("/");
+});
+app.post("/lights/off", function(req, res){
+  hourLight.pwmWrite(0);
+  minutesLight.pwmWrite(0);
+  secondsLight.pwmWrite(0);
+  res.redirect("/");
+});
+
 app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 
 //clocking here
@@ -120,9 +133,9 @@ setInterval(() => {
     //let hPos = scale(currentTime.getHours(), 0, 24, config.hours.right, config.hours.left);
     //let mPos = scale(currentTime.getMinutes(), 0, 60, config.minutes.right, config.minutes.left);
     //let sPos = scale(currentTime.getSeconds(), 0, 60, config.seconds.right, config.seconds.left);
-    let hPos = config.hours.left - (((config.hours.left - config.hours.right) / 24) * currentTime.getHours());
-    let mPos = config.minutes.left - (((config.minutes.left - config.minutes.right) / 60) * currentTime.getMinutes());
-    let sPos =  config.seconds.left - (((config.seconds.left - config.seconds.right) / 60) * currentTime.getSeconds());
+    let hPos = config.hours.left - (((config.hours.left - config.hours.right) / 23) * currentTime.getHours());
+    let mPos = config.minutes.left - (((config.minutes.left - config.minutes.right) / 59) * currentTime.getMinutes());
+    let sPos =  config.seconds.left - (((config.seconds.left - config.seconds.right) / 59) * currentTime.getSeconds());
 
     if(hPos > config.hours.right && hPos < config.hours.left) hourServo.servoWrite(Math.floor(hPos));
     else console.log("Erroneous hpos: " + hPos);
