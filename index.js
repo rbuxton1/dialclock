@@ -32,6 +32,11 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+//backlight init
+hourLight.pwmWrite(config.hours.bl);
+minutesLight.pwmWrite(config.minutes.bl);
+secondsLight.pwmWrite(config.seconds.bl);
+
 app.get("/", function(req, res){
   res.render("index");
 });
