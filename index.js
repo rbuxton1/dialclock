@@ -15,7 +15,7 @@ var config = JSON.parse(configFile);
 const hourServo = new Gpio(14, {mode: Gpio.OUTPUT});
 const hourLight = new Gpio(25, {mode: Gpio.OUTPUT});
 const minutesServo = new Gpio(15, {mode: Gpio.OUTPUT});
-const minitesLight = new Gpio(8, {mode: Gpio.OUTPUT});
+const minutesLight = new Gpio(8, {mode: Gpio.OUTPUT});
 const secondsServo = new Gpio(18, {mode: Gpio.OUTPUT});
 const secondsLight = new Gpio(7, {mode: Gpio.OUTPUT});
 
