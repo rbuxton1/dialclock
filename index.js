@@ -23,6 +23,9 @@ const scale = (num, in_min, in_max, out_min, out_max) => {
   return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
+//modes
+var clockMode = true;
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -31,42 +34,49 @@ app.get("/", function(req, res){
   res.render("index");
 });
 
-app.post("/setHours", function(req, res){
-  hourServo.servoWrite(req.body.hourServo);
+app.post("/set/hours/pos", function(req, res){
+  hourServo.servoWrite(req.body.pos);
   res.redirect("/");
 });
-app.post("/setMinutes", function(req, res){
-  minutesServo.servoWrite(req.body.minutesServo);
+app.post("/set/minutes/pos", function(req, res){
+  minutesServo.servoWrite(req.body.pos);
   res.redirect("/");
 });
-app.post("/setSeconds", function(req, res){
-  secondsServo.servoWrite(req.body.secondsServo);
+app.post("/set/seconds/pos", function(req, res){
+  secondsServo.servoWrite(req.body.pos);
   res.redirect("/");
 });
 
-app.post("/setHoursLight", function(req, res){
-  hourLight.pwmWrite(req.body.hourLight);
+app.post("/set/hours/bl", function(req, res){
+  hourLight.pwmWrite(req.body.bl);
   res.redirect("/");
 });
-app.post("/setMinutesLight", function(req, res){
-  minutesLight.pwmWrite(req.body.minutesLight);
+app.post("/set/minutes/bl", function(req, res){
+  minutesLight.pwmWrite(req.body.bl);
   res.redirect("/");
 });
-app.post("/setSecondsLight", function(req, res){
-  secondsLight.pwmWrite(req.body.secondsLight);
+app.post("/set/minutes/bl", function(req, res){
+  secondsLight.pwmWrite(req.body.bl);
   res.redirect("/");
-})
+});
+
+app.post("/invertmode", function(req, res){
+  clockMode = !clockMode;
+  res.redirect("/");
+});
 
 app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 
 //clocking here
 setInterval(() => {
-  var date = new Date();
-  var hPos = left - scale(date.getHours(), 0, 23, right, left);
-  var mPos = left - scale(date.getMinutes(), 0, 59, right, left);
-  var sPos = left - scale(date.getSeconds(), 0, 59, right, left);
+  if(clockMode){
+    var date = new Date();
+    var hPos = left - scale(date.getHours(), 0, 23, right, left);
+    var mPos = left - scale(date.getMinutes(), 0, 59, right, left);
+    var sPos = left - scale(date.getSeconds(), 0, 59, right, left);
 
-  hourServo.servoWrite(Math.floor(hPos) + right);
-  minutesServo.servoWrite(Math.floor(mPos) + right);
-  secondsServo.servoWrite(Math.floor(sPos) + right);
-}, 250);
+    hourServo.servoWrite(Math.floor(hPos) + right);
+    minutesServo.servoWrite(Math.floor(mPos) + right);
+    secondsServo.servoWrite(Math.floor(sPos) + right);
+  }
+}, 50);
