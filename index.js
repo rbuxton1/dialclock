@@ -111,9 +111,9 @@ app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 setInterval(() => {
   if(clockMode){
     var date = new Date();
-    var hPos = left - scale(date.getHours(), 0, 23, config.hours.right, config.hours.left);
-    var mPos = left - scale(date.getMinutes(), 0, 59, config.minutes.right, config.hours.left);
-    var sPos = left - scale(date.getSeconds(), 0, 59, config.seconds.right, config.seconds.left);
+    var hPos = config.hours.left - scale(date.getHours(), 0, 23, config.hours.right, config.hours.left);
+    var mPos = config.minutes.left - scale(date.getMinutes(), 0, 59, config.minutes.right, config.hours.left);
+    var sPos = config.seconds.left - scale(date.getSeconds(), 0, 59, config.seconds.right, config.seconds.left);
 
     hourServo.servoWrite(Math.floor(hPos) + right);
     minutesServo.servoWrite(Math.floor(mPos) + right);
