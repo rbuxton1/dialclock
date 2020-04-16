@@ -116,22 +116,15 @@ app.listen(8080, function(){ console.log("Listening on port 8080!"); });
 setInterval(() => {
   if(clockMode){
     var date = new Date();
-    //(num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-    config.hours.left = config.hours.left + 0;
-    config.minutes.left = config.minutes.left + 0;
-    config.seconds.left = config.seconds.left + 0;
-    config.hours.right = config.hours.right + 0;
-    config.minutes.right = config.minutes.right + 0;
-    config.seconds.right = config.seconds.right + 0;
     var hPos = Math.floor(config.hours.left - scale(date.getHours(), 0, 23, config.hours.right, config.hours.left)) + config.hours.right;
     var mPos = Math.floor(config.minutes.left - scale(date.getMinutes(), 0, 59, config.minutes.right, config.minutes.left)) + config.minutes.right;
     var sPos = Math.floor(config.seconds.left - scale(date.getSeconds(), 0, 23, config.seconds.right, config.seconds.left)) + config.seconds.right;
 
-    if(hPos > 400 && hPos < 2300) hourServo.servoWrite(hPos);
+    if(hPos > config.hours.right && hPos < config.hours.left) hourServo.servoWrite(hPos);
     else console.log("Erroneous hpos: " + hPos);
-    if(mPos > 400 && mPos < 2300) minutesServo.servoWrite(mPos);
+    if(mPos > config.minutes.right && mPos < config.minutes.left) minutesServo.servoWrite(mPos);
     else console.log("Erroneous mpos: " + mPos);
-    if(sPos > 400 && mPos < 2300) secondsServo.servoWrite(Math.floor(sPos) + config.seconds.right);
+    if(sPos > config.seconds.right && mPos < config.seconds.left) secondsServo.servoWrite(Math.floor(sPos) + config.seconds.right);
     else console.log("Erroneous spos: " + sPos);
   }
 }, 50);
