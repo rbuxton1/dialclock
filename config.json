@@ -1,17 +1,17 @@
 {
   "hours": {
-    "left": 2200,
-    "right": 700,
-    "bl": 255
+    "left": "2200",
+    "right": "700",
+    "bl": "255"
   },
   "minutes": {
-    "left": 2200,
-    "right": 700,
-    "bl": 255
+    "left": "2200",
+    "right": "700",
+    "bl": "255"
   },
   "seconds": {
-    "left": 2200,
-    "right": 700,
-    "bl": 255
+    "left": "2200",
+    "right": "700",
+    "bl": "255"
   }
 }
