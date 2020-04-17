@@ -10,7 +10,7 @@
       <div class="w3-container w3-center">
         <h1> General </h1>
         <form class="w3-container" action="/invertmode" method="post">
-          <input type="submit" name="submit" value="Invert mode" class="w3-button w3-blue">
+          <input type="submit" name="submit" value="Enable / Disable Clock" class="w3-button w3-blue">
         </form>
         <form class="w3-container" action="/lights/on" method="post">
           <input type="submit" name="submit" value="Lights On" class="w3-button w3-blue">
@@ -19,6 +19,8 @@
           <input type="submit" name="submit" value="Lights Off" class="w3-button w3-blue">
         </form>
       </div>
+
+      <hr>
 
       <div class="w3-container w3-center">
         <h1> Hours </h1>
@@ -33,6 +35,10 @@
         <form class="w3-container" action="/set/hours/right" method="post">
           <input type="number" name="right" placeholder="right end point">
           <input type="submit" name="submit" value="Set" class="w3-button w3-blue">
+        </form>
+        <form class="w3-container" action="/set/hours/bl" method="post">
+          <input type="number" name="bl" placeholder="backlight (0-255)">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-yellow">
         </form>
       </div>
 
@@ -52,6 +58,10 @@
           <input type="number" name="right" placeholder="right end point">
           <input type="submit" name="submit" value="Set" class="w3-button w3-blue">
         </form>
+        <form class="w3-container" action="/set/minutes/bl" method="post">
+          <input type="number" name="bl" placeholder="backlight (0-255)">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-yellow">
+        </form>
       </div>
 
       <hr>
@@ -69,6 +79,10 @@
         <form class="w3-container" action="/set/seconds/right" method="post">
           <input type="number" name="right" placeholder="right end point">
           <input type="submit" name="submit" value="Set" class="w3-button w3-blue">
+        </form>
+        <form class="w3-container" action="/set/seconds/bl" method="post">
+          <input type="number" name="bl" placeholder="backlight (0-255)">
+          <input type="submit" name="submit" value="Set" class="w3-button w3-yellow">
         </form>
       </div>
     </body>
