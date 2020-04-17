@@ -67,7 +67,7 @@ app.post("/set/minutes/bl", function(req, res){
   minutesLight.pwmWrite(req.body.bl);
   res.redirect("/");
 });
-app.post("/set/minutes/bl", function(req, res){
+app.post("/set/seconds/bl", function(req, res){
   config.seconds.bl = req.body.bl
   fs.writeFileSync('config.json', JSON.stringify(config));
   secondsLight.pwmWrite(req.body.bl);
